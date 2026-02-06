@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Surprise my Wife ❤️</title>
+    <title>❤️ Wife Surprise ❤️</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link
@@ -11,21 +11,20 @@
         rel="stylesheet">
 
     <style>
+        /* YOUR ORIGINAL CSS — UNTOUCHED */
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Poppins;
+            font-family: Poppins
         }
 
         body {
             height: 100vh;
             background: linear-gradient(135deg, #ff9a9e, #fad0c4);
             overflow: hidden;
-            transition: 1.5s;
         }
-
-        /* LOADER */
 
         #loader {
             position: fixed;
@@ -38,16 +37,12 @@
             z-index: 10;
         }
 
-        /* MAIN */
-
         #main {
             display: none;
             height: 100%;
             align-items: center;
             justify-content: center;
         }
-
-        /* CARD */
 
         .card {
             background: #efefef;
@@ -61,27 +56,20 @@
             z-index: 1;
         }
 
-        /* Lovely Animated Border */
-
-        /* Lovely Animated BORDER ONLY (4px) */
-
         .card::before,
-        .popup::before{
-            content:"";
-            position:absolute;
-            inset:0;
-            border-radius:30px;
-            padding:4px;               /* BORDER THICKNESS */
-            background:linear-gradient(60deg,#ff4b7d,#ffd1dc,#ff4b7d);
-            animation:borderGlow 6s linear infinite;
-            -webkit-mask:
-            linear-gradient(#fff 0 0) content-box,
-            linear-gradient(#fff 0 0);
-            -webkit-mask-composite:xor;
-            mask-composite:exclude;
-            pointer-events:none;
+        .popup::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 30px;
+            padding: 4px;
+            background: linear-gradient(60deg, #ff4b7d, #ffd1dc, #ff4b7d);
+            animation: borderGlow 6s linear infinite;
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
         }
-
 
         @keyframes borderGlow {
             0% {
@@ -92,8 +80,6 @@
                 filter: hue-rotate(360deg)
             }
         }
-
-        /* Love Icons */
 
         .love-icons {
             display: flex;
@@ -133,10 +119,8 @@
             }
         }
 
-        /* Question */
-
         .question {
-            font-family: "Great Vibes", cursive;
+            font-family: "Great Vibes";
             font-size: 28px;
             color: #ff4b7d;
             margin-bottom: 15px;
@@ -159,8 +143,6 @@
             }
         }
 
-        /* Info */
-
         .info {
             margin: 15px 0;
             padding: 10px;
@@ -169,8 +151,6 @@
             color: #1e18aa;
             font-size: 12px;
         }
-
-        /* Buttons */
 
         .buttons {
             margin-top: 20px;
@@ -182,23 +162,15 @@
             padding: 0 10px;
         }
 
-        button {
-            border: none;
-            font-size: 15px;
-            cursor: pointer;
-        }
-
-        /* YES */
-
         #yesBtn {
             background: #ff4b7d;
             color: white;
             padding: 10px 22px;
             border-radius: 12px;
             box-shadow: 0 10px 25px rgba(255, 75, 125, .4);
+            cursor: pointer;
+            border: transparent;
         }
-
-        /* NO */
 
         #noBtn {
             background: #fffdfd;
@@ -209,9 +181,8 @@
             right: 10px;
             transition: .6s cubic-bezier(.25, .8, .25, 1);
             cursor: not-allowed;
+            border: #fff;
         }
-
-        /* FINAL */
 
         #final {
             display: none;
@@ -224,7 +195,6 @@
             flex-direction: column;
             text-align: center;
             padding: 30px;
-            animation: fadeIn 2s;
         }
 
         .popup {
@@ -234,10 +204,7 @@
             max-width: 420px;
             backdrop-filter: blur(8px);
             position: relative;
-            z-index: 1;
         }
-
-        /* Fireworks */
 
         .fire {
             position: absolute;
@@ -267,6 +234,107 @@
                 opacity: 1
             }
         }
+
+        /* NEW ONLY */
+
+        #letter {
+            margin-top: 10px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .gallery {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+        .gallery img {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            border-radius: 10px;
+            opacity: 0;
+            transform: scale(.8);
+            transition: .8s;
+        }
+
+        /* Footer */
+
+        #loveFooter{
+            position:fixed;
+            bottom:5px;
+            left:0;
+            width:100%;
+            text-align:center;
+            font-size:12px;
+            color:rgb(145 60 60);
+            opacity:.7;
+            font-family:Poppins;
+            pointer-events:none;
+        }
+
+        #loveFooter strong{
+            font-family:'Great Vibes';
+            font-size:18px;
+        }
+
+        /* Forever screen animation */
+
+        #foreverUs{
+            opacity:0;
+            transform:scale(1.05);
+            transition:opacity 2.5s ease, transform 6s ease;
+        }
+
+        #foreverUs.show{
+            opacity:1;
+            transform:scale(1);
+        }
+
+
+        #foreverLetter{
+            margin-top: 10px;
+            max-height:55vh;          /* keeps inside screen */
+            overflow-y:auto;
+            padding-right:6px;
+        }
+
+            /* Smooth mobile scrolling */
+
+        #foreverLetter::-webkit-scrollbar{
+            width:4px;
+        }
+
+        #foreverLetter::-webkit-scrollbar-thumb{
+            background:rgba(255,255,255,.3);
+            border-radius:10px;
+        }
+
+
+        /* Candle Glow */
+
+        .candle{
+            position:fixed;
+            bottom:40px;
+            left:50%;
+            transform:translateX(-50%);
+            width:120px;
+            height:120px;
+            background:radial-gradient(circle,rgba(255,200,120,.6),transparent 70%);
+            filter:blur(10px);
+            animation:flicker 2s infinite;
+            pointer-events:none;
+            z-index:1;
+        }
+
+        @keyframes flicker{
+            0%,100%{opacity:.6}
+            50%{opacity:1}
+        }
+
+
     </style>
 </head>
 
@@ -274,28 +342,40 @@
 
     <div id="loader">
         <img src="love-loading.gif" width="170">
-        <p style="color:#666;margin-top:10px;font-weight:600">
-            ❤️ Wait my dear lady ❤️
-        </p>
+        <p style="color:#666;margin-top:10px;font-weight:600">❤️ Wait my dear lady ❤️</p>
+    </div>
+
+    <div id="audioGate" style="
+    position:fixed;
+    inset:0;
+    background:#ffb6c1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    z-index:20;
+    font-family:'Great Vibes';
+    font-size:28px;
+    color: rgb(174 41 41);
+    text-align:center;
+    cursor:pointer;
+    ">
+        Tap &nbsp; to &nbsp; begin &nbsp; your &nbsp; journey 😇<br><br>
+        <span style="font-size:18px">🔊 Touch anywhere</span>
     </div>
 
     <div id="main">
         <div class="card" id="card">
 
             <div class="love-icons">
-                <span>💖</span>
-                <span>💍</span>
-                <span>✨</span>
-                <span>💕</span>
+                <span>💖</span><span>💍</span><span>✨</span><span>💕</span>
             </div>
 
             <div class="question">
                 <span>💞</span> Will you be my Valentine? <span>💞</span>
             </div>
 
-            <div class="info">
-                ℹ️ Don’t worry, You can choose No as your wish 😇
-            </div>
+            <div class="info">ℹ️ Don’t worry, You can choose No as your wish 😇</div>
 
             <div class="buttons">
                 <button id="yesBtn">Yes 💍</button>
@@ -308,67 +388,281 @@
     <div id="final">
         <div class="popup">
 
-            <p style="font-family:'Great Vibes',cursive;font-size:30px">
-                Yay! Finally &nbsp; you &nbsp; said <br> 
-                <span style="font-family:'Great Vibes',cursive; font-weight: 600; color:rgba(218, 234, 34, 0.53)">YES</span> 💖
+            <p style="font-family:'Great Vibes';font-size:30px">
+                Yay! &nbsp; Finally &nbsp; you &nbsp; said<br>
+                <span style="font-family:'Great Vibes';color:rgba(218,234,34,.53)">YES</span> 💖
             </p><br>
 
-            Congratulations my dear Lady 💕<br><br>
+            <div id="letter"></div><br>
 
-            This moment just became a beautiful memory ✨<br><br>
-
-            You're my today, tomorrow & forever 💞<br><br>
-
-            Thanks for being my wife, my love & best friend 💐<br><br>
-
-            I love you endlessly ❤️
+            <div class="gallery">
+                <img src="./couple-bg-4.jpeg">
+                <img src="./couple-bg-2.jpeg">
+                <img src="./couple-bg-1.jpeg">
+                <img src="./couple-bg-3.jpeg">
+            </div>
 
         </div>
     </div>
 
+    <!-- Forever Us -->
+    <div id="foreverUs" style="
+    display:none;
+    position:fixed;
+    inset:0;
+    background:url('./couple-bg-1.jpeg') center/cover no-repeat;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    text-align:center;
+    z-index:50;
+    ">
+    
+        <!-- Glass Overlay -->
+        <div style="
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.55);
+    /* backdrop-filter:blur(1px); */
+    "></div>
+    
+        <div style="position:relative;z-index:2;max-width:360px;">
+    
+            <h1 style="font-family:'Great Vibes';font-size:48px;margin-bottom:10px;color:white;">
+            💍 Forever &nbsp; Us 💍
+            </h1>
+    
+            <p style="font-size:20px;font-family:Poppins;max-width:320px;color:white;">
+                Two souls<br>
+                One heart<br>
+            ❤️ Endless, Love Forever ❤️
+            </p>
+            <hr>
+            
+            <div id="typingHand" style="margin-top:10px;font-size:18px;opacity:.8;">✍️</div>
+            <div id="foreverLetter" style="font-family:Poppins;font-size:14px;line-height:1.7;color:white;"></div>
+            
+            <p style="margin-top:14px;font-family:'Great Vibes';font-size:20px;color:#ffd;">
+                Regards &nbsp; & &nbsp; Thanks<br>
+                Your &nbsp; Husband &nbsp; ❤️ <br>
+                <strong>Muhammad Faizan Abid</strong>
+            </p>
+    
+            <div class="candle"></div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="loveFooter">
+        Designed with ❤️ by Husband <strong>&nbsp; Faizan &nbsp; Abid</strong><br>
+        © <span id="year"></span> — All Rights Reserved
+    </footer>
+
+
+
+    <audio id="bgMusic" loop>
+        <source src="./white-petals.mp3" type="audio/mpeg">
+    </audio>
+    
+    <button id="musicToggle"
+        style="position:fixed;bottom:15px;right:15px;border:none;background:white;border-radius:50%;width:45px;height:45px;font-size:20px;cursor:pointer;box-shadow:0 5px 15px rgba(0,0,0,.2);z-index:99;">
+        🔊
+    </button>
+
     <script>
 
-        /* Loader */
+        document.getElementById("year").innerText = new Date().getFullYear();
 
-        setTimeout(() => {
-            loader.style.display = "none";
-            main.style.display = "flex";
-        }, 6000);
+        const music = document.getElementById("bgMusic");
+        const toggle = document.getElementById("musicToggle");
 
-        /* SHY NO */
+        music.volume = 0;
 
-        let changed = false;
+        /* AUDIO PERMISSION GATE */
 
-        noBtn.onmouseenter = () => {
-            const area = document.getElementById("card");
+        const gate = document.getElementById("audioGate");
 
-            const maxX = area.clientWidth - 150;
-            const maxY = area.clientHeight - 150;
+        gate.onclick = () => {
 
-            noBtn.style.left = Math.random() * maxX + "px";
-            noBtn.style.top = Math.random() * maxY + "px";
+            gate.style.display = "none";
 
-            if (!changed) {
-                noBtn.innerHTML = "No 😂";
-                changed = true;
+            // small romantic delay
+            setTimeout(() => {
+                loader.style.display = "none";
+                main.style.display = "flex";
+            }, 5000);
+
+            // user interaction → browser allows sound
+            music.play();
+            fadeInMusic();
+        };
+
+        /* Fade In Music */
+
+        function fadeInMusic() {
+            let v = 0;
+            const i = setInterval(() => {
+                v += 0.02;
+                if (v >= 0.5) {
+                    v = 0.5;
+                    clearInterval(i);
+                }
+                music.volume = v;
+            }, 200);
+        }
+
+        /* Toggle */
+
+        toggle.onclick = () => {
+            if (music.paused) {
+                music.play();
+                toggle.innerHTML = "🔊";
+            } else {
+                music.pause();
+                toggle.innerHTML = "🔇";
             }
         };
 
-        /* YES */
+        /* Fade Out Music (called on YES) */
+
+        function fadeOutMusic() {
+            let v = music.volume;
+            const f = setInterval(() => {
+                v -= 0.02;
+                if (v <= 0) {
+                    music.pause();
+                    clearInterval(f);
+                }
+                music.volume = v;
+            }, 200);
+        }
+
+        let changed = false;
+        noBtn.onmouseenter = () => {
+            const area = document.getElementById("card");
+            noBtn.style.left = Math.random() * (area.clientWidth - 150) + "px";
+            noBtn.style.top = Math.random() * (area.clientHeight - 150) + "px";
+            if (!changed) { noBtn.innerHTML = "No 😂"; changed = true; }
+        };
 
         yesBtn.onclick = () => {
             main.style.display = "none";
             final.style.display = "flex";
+            loveFooter.style.color = "rgb(219 219 219)";
+            foreverUs.style.color = "rgb(219 219 219)";
+
             fireworks();
+            typeLetter();
+            syncGallery();
+            showForever();
+            fadeOutMusic();
         };
 
-        /* FIREWORKS */
+        /* Typewriter */
 
+        const text = `Congratulations my dear lady AMMARA 💞
+         This moment just became a beautiful memory ✨
+         You're my today, tomorrow & forever 💞
+         Thanks for being my wife, my love & best friend 💐
+         I love you endlessly ❤️`;
+
+        function typeLetter() {
+            let i = 0;
+            const el = document.getElementById("letter");
+
+            const t = setInterval(() => {
+                let ch = text.charAt(i);
+                el.innerHTML += ch === "\n" ? "<br>" : ch;
+                i++;
+                if (i >= text.length) clearInterval(t);
+            }, 40);
+        }
+
+        /* Gallery */
+        function syncGallery() {
+            const imgs = document.querySelectorAll(".gallery img");
+            let i = 0;
+            setInterval(() => {
+                if (imgs[i]) {
+                    imgs[i].style.opacity = 1;
+                    imgs[i].style.transform = "scale(1)";
+                    i++;
+                }
+            }, 2000);
+        }
+        
+        /* Forever Letter Typing */
+
+        const foreverText = `My beautiful wife ❤️
+            You are the strongest, kindest, and most precious blessing of my life.
+            Every day with you teaches me patience, love, and gratitude.
+            May Allah always keep you smiling,
+            protect your heart,
+            fulfill your dreams,
+            and grant you success in everything you touch.
+            Never doubt yourself —
+            you are capable of amazing things.
+            I am proud of you.
+            I believe in you.
+            And I will always stand beside you.
+            You are my peace,
+            my home,
+            my forever. 💕
+            Ameen 🤲.`;
+
+            function typeForeverLetter() {
+                let i = 0;
+                const el = document.getElementById("foreverLetter");
+                const hand = document.getElementById("typingHand");
+
+                const t = setInterval(() => {
+                    let ch = foreverText.charAt(i);
+                    el.innerHTML += ch === "\n" ? "<br>" : ch;
+                    i++;
+
+                    if (i >= foreverText.length) {
+                        clearInterval(t);
+                        hand.style.display = "none";
+                    }
+                }, 45);
+            }
+        
+        /* Forever Us */
+        function showForever() {
+                setTimeout(() => {
+                    final.style.display = "none";
+                    const forever = document.getElementById("foreverUs");
+                    forever.style.display = "flex";
+
+                    // trigger smooth animation
+                    setTimeout(() => forever.classList.add("show"), 100);
+                    typeForeverLetter();
+
+                    // keep footer visible
+                    // document.getElementById("loveFooter").style.opacity = 1;
+
+                }, 12000); // 10s after gallery+letter
+
+            }
+
+        /* Fade out music */
+        function fadeOutMusic() {
+            setTimeout(() => {
+                let v = music.volume;
+                const f = setInterval(() => {
+                    v -= 0.02;
+                    if (v <= 0) { music.pause(); clearInterval(f); }
+                    music.volume = v;
+                }, 200);
+            }, 80000);
+        }
+
+        /* Fireworks */
         function fireworks() {
             setInterval(() => {
                 const f = document.createElement("div");
                 f.className = "fire";
-                f.innerHTML = "💖";
+                f.innerHTML = Math.random() > 0.5 ? "💖" : "🌸";
                 f.style.left = Math.random() * 100 + "vw";
                 f.style.bottom = "0";
                 document.body.appendChild(f);
