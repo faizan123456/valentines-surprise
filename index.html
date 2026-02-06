@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Surprise my Wife ❤️</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Great+Vibes&family=Pacifico&display=swap"
+        rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Poppins;
+        }
+
+        body {
+            height: 100vh;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            overflow: hidden;
+            transition: 1.5s;
+        }
+
+        /* LOADER */
+
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #ffb6c1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        /* MAIN */
+
+        #main {
+            display: none;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* CARD */
+
+        .card {
+            background: #efefef;
+            padding: 45px 35px;
+            width: 420px;
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, .2);
+            text-align: center;
+            animation: fadeIn 1.5s;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Lovely Animated Border */
+
+        /* Lovely Animated BORDER ONLY (4px) */
+
+        .card::before,
+        .popup::before{
+            content:"";
+            position:absolute;
+            inset:0;
+            border-radius:30px;
+            padding:4px;               /* BORDER THICKNESS */
+            background:linear-gradient(60deg,#ff4b7d,#ffd1dc,#ff4b7d);
+            animation:borderGlow 6s linear infinite;
+            -webkit-mask:
+            linear-gradient(#fff 0 0) content-box,
+            linear-gradient(#fff 0 0);
+            -webkit-mask-composite:xor;
+            mask-composite:exclude;
+            pointer-events:none;
+        }
+
+
+        @keyframes borderGlow {
+            0% {
+                filter: hue-rotate(0deg)
+            }
+
+            100% {
+                filter: hue-rotate(360deg)
+            }
+        }
+
+        /* Love Icons */
+
+        .love-icons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .love-icons span {
+            font-size: 22px;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        .love-icons span:nth-child(2) {
+            animation-delay: .3s
+        }
+
+        .love-icons span:nth-child(3) {
+            animation-delay: .6s
+        }
+
+        .love-icons span:nth-child(4) {
+            animation-delay: .9s
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-6px)
+            }
+
+            100% {
+                transform: translateY(0)
+            }
+        }
+
+        /* Question */
+
+        .question {
+            font-family: "Great Vibes", cursive;
+            font-size: 28px;
+            color: #ff4b7d;
+            margin-bottom: 15px;
+        }
+
+        .question span {
+            animation: bounce 1.8s infinite;
+            display: inline-block;
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-8px)
+            }
+        }
+
+        /* Info */
+
+        .info {
+            margin: 15px 0;
+            padding: 10px;
+            background: #c3d8f4;
+            border-radius: 12px;
+            color: #1e18aa;
+            font-size: 12px;
+        }
+
+        /* Buttons */
+
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            height: 90px;
+            padding: 0 10px;
+        }
+
+        button {
+            border: none;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        /* YES */
+
+        #yesBtn {
+            background: #ff4b7d;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(255, 75, 125, .4);
+        }
+
+        /* NO */
+
+        #noBtn {
+            background: #fffdfd;
+            width: 110px;
+            padding: 10px 0;
+            border-radius: 12px;
+            position: absolute;
+            right: 10px;
+            transition: .6s cubic-bezier(.25, .8, .25, 1);
+            cursor: not-allowed;
+        }
+
+        /* FINAL */
+
+        #final {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle, #ff2e6f, #3a0016);
+            color: white;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            text-align: center;
+            padding: 30px;
+            animation: fadeIn 2s;
+        }
+
+        .popup {
+            background: rgba(170, 70, 70, .5);
+            padding: 35px;
+            border-radius: 30px;
+            max-width: 420px;
+            backdrop-filter: blur(8px);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Fireworks */
+
+        .fire {
+            position: absolute;
+            font-size: 20px;
+            animation: fire 2s linear forwards;
+        }
+
+        @keyframes fire {
+            from {
+                transform: translateY(0);
+                opacity: 1
+            }
+
+            to {
+                transform: translateY(-300px);
+                opacity: 0
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(.9)
+            }
+
+            to {
+                opacity: 1
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="loader">
+        <img src="love-loading.gif" width="170">
+        <p style="color:#666;margin-top:10px;font-weight:600">
+            ❤️ Wait my dear lady ❤️
+        </p>
+    </div>
+
+    <div id="main">
+        <div class="card" id="card">
+
+            <div class="love-icons">
+                <span>💖</span>
+                <span>💍</span>
+                <span>✨</span>
+                <span>💕</span>
+            </div>
+
+            <div class="question">
+                <span>💞</span> Will you be my Valentine? <span>💞</span>
+            </div>
+
+            <div class="info">
+                ℹ️ Don’t worry, You can choose No as your wish 😇
+            </div>
+
+            <div class="buttons">
+                <button id="yesBtn">Yes 💍</button>
+                <button id="noBtn">No 😳</button>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="final">
+        <div class="popup">
+
+            <p style="font-family:'Great Vibes',cursive;font-size:30px">
+                Yay! Finally &nbsp; you &nbsp; said <br> 
+                <span style="font-family:'Great Vibes',cursive; font-weight: 600; color:rgba(218, 234, 34, 0.53)">YES</span> 💖
+            </p><br>
+
+            Congratulations my dear Lady 💕<br><br>
+
+            This moment just became a beautiful memory ✨<br><br>
+
+            You're my today, tomorrow & forever 💞<br><br>
+
+            Thanks for being my wife, my love & best friend 💐<br><br>
+
+            I love you endlessly ❤️
+
+        </div>
+    </div>
+
+    <script>
+
+        /* Loader */
+
+        setTimeout(() => {
+            loader.style.display = "none";
+            main.style.display = "flex";
+        }, 6000);
+
+        /* SHY NO */
+
+        let changed = false;
+
+        noBtn.onmouseenter = () => {
+            const area = document.getElementById("card");
+
+            const maxX = area.clientWidth - 150;
+            const maxY = area.clientHeight - 150;
+
+            noBtn.style.left = Math.random() * maxX + "px";
+            noBtn.style.top = Math.random() * maxY + "px";
+
+            if (!changed) {
+                noBtn.innerHTML = "No 😂";
+                changed = true;
+            }
+        };
+
+        /* YES */
+
+        yesBtn.onclick = () => {
+            main.style.display = "none";
+            final.style.display = "flex";
+            fireworks();
+        };
+
+        /* FIREWORKS */
+
+        function fireworks() {
+            setInterval(() => {
+                const f = document.createElement("div");
+                f.className = "fire";
+                f.innerHTML = "💖";
+                f.style.left = Math.random() * 100 + "vw";
+                f.style.bottom = "0";
+                document.body.appendChild(f);
+                setTimeout(() => f.remove(), 2000);
+            }, 200);
+        }
+
+    </script>
+
+</body>
+
+</html>
