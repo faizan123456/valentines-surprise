@@ -299,10 +299,13 @@
             max-height:55vh;          /* keeps inside screen */
             overflow-y:auto;
             padding-right:6px;
+            /* iOS smooth scroll */
+            -webkit-overflow-scrolling: touch;
+            /* prevent page from hijacking scroll */
+            touch-action: pan-y;
         }
 
-            /* Smooth mobile scrolling */
-
+        /* Smooth mobile scrolling */
         #foreverLetter::-webkit-scrollbar{
             width:4px;
         }
@@ -472,10 +475,8 @@
     <script>
 
         document.getElementById("year").innerText = new Date().getFullYear();
-
         const music = document.getElementById("bgMusic");
         const toggle = document.getElementById("musicToggle");
-
         music.volume = 0;
 
         /* AUDIO PERMISSION GATE */
@@ -490,7 +491,7 @@
             setTimeout(() => {
                 loader.style.display = "none";
                 main.style.display = "flex";
-            }, 5000);
+            }, 7000);
 
             // user interaction → browser allows sound
             music.play();
@@ -511,8 +512,7 @@
             }, 200);
         }
 
-        /* Toggle */
-
+        /* Music Toggle */
         toggle.onclick = () => {
             if (music.paused) {
                 music.play();
@@ -538,12 +538,23 @@
         }
 
         let changed = false;
-        noBtn.onmouseenter = () => {
+
+        function moveNoButton() {
             const area = document.getElementById("card");
             noBtn.style.left = Math.random() * (area.clientWidth - 150) + "px";
             noBtn.style.top = Math.random() * (area.clientHeight - 150) + "px";
-            if (!changed) { noBtn.innerHTML = "No 😂"; changed = true; }
-        };
+
+            if (!changed) {
+                noBtn.innerHTML = "No 😂";
+                changed = true;
+            }
+        }
+        noBtn.onmouseenter = moveNoButton;
+
+        /* Mobile tap */
+        noBtn.addEventListener("touchstart", moveNoButton);
+        /* Fallback click */
+        noBtn.onclick = moveNoButton;
 
         yesBtn.onclick = () => {
             main.style.display = "none";
@@ -559,7 +570,6 @@
         };
 
         /* Typewriter */
-
         const text = `Congratulations my dear lady AMMARA 💞
          This moment just became a beautiful memory ✨
          You're my today, tomorrow & forever 💞
@@ -575,7 +585,7 @@
                 el.innerHTML += ch === "\n" ? "<br>" : ch;
                 i++;
                 if (i >= text.length) clearInterval(t);
-            }, 40);
+            }, 60);
         }
 
         /* Gallery */
@@ -588,7 +598,7 @@
                     imgs[i].style.transform = "scale(1)";
                     i++;
                 }
-            }, 2000);
+            }, 3000);
         }
         
         /* Forever Letter Typing */
@@ -641,7 +651,7 @@
                     // keep footer visible
                     // document.getElementById("loveFooter").style.opacity = 1;
 
-                }, 12000); // 10s after gallery+letter
+                }, 20000); // 20s after gallery+letter
 
             }
 
